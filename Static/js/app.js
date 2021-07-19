@@ -1,5 +1,5 @@
 // Define SVG area dimensions
-var svgWidth = 960;
+var svgWidth = 1200;
 var svgHeight = 660;
 
 // Define the chart's margins as an object
@@ -7,7 +7,7 @@ var chartMargin = {
   top: 30,
   right: 30,
   bottom: 30,
-  left: 30
+  left: 50
 };
 
 // Define dimensions of the chart area
@@ -27,6 +27,19 @@ var chartGroup = svg.append("g")
 // Load data from hours-of-tv-watched.csv
 d3.csv("Data/impacts.csv").then(function(Data) {
 
+  // Cast the Start values to a number for each piece of Data
+  Data.forEach(function(d) {
+    d.Start = +d.Start;
+  });
+
+    //Transform the data
+    Data = Data.filter(function(d){
+      return d.Start == 2021
+
+    });
+  
+  
+  
     // Cast the impacts value to a number for each piece of Data
     Data.forEach(function(d) {
       d.impacts = +d.impacts;
@@ -68,7 +81,10 @@ d3.csv("Data/impacts.csv").then(function(Data) {
       .attr("y", d => yLinearScale(d.impacts))
       .attr("width", xBandScale.bandwidth())
       .attr("height", d => chartHeight - yLinearScale(d.impacts));
+      
+
  
 }).catch(function(error) {
   console.log(error);
 });
+
