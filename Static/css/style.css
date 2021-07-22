@@ -5,19 +5,20 @@
 }
 .text1 {
 	position: absolute;
-  	top: 25%;
+	text-align: center;
+  	top: 45%;
   	left: 35%;
 	color: white;
 	transform: translate(-20%, -20%);
 
 }
-/* body {
+body {
 	font-family: Arial, Helvetica, sans-serif;
 	align-content: center;
-	background-color: black;
-	position: absolute;
+	/* background-color: black; */
+	/* position: relative; */
 
-} */
+}
 html,
 body,
 #map-id {
@@ -27,17 +28,29 @@ body,
 }
 
 img {
-    margin-left: auto;
-    margin-right: auto;
-    
+    margin-left: left;
+    margin-right: right;
     display: block;
+	text-align: center;
+	/* opacity: 0.6; */
   }
 .navbar {
 	background-color: black;
+	z-index: 999;
+	
   }
-   
+    
+.centered {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -50px;
+	margin-left: -100px;
+  }
+
 .dropdown {
-	float: RIGHT; 
+	float: left; 
+	
   }
   
 .dropdown .dropbtn {
@@ -48,12 +61,13 @@ img {
 	padding: 14px 16px;
 	background-color: inherit;
 	font-family: inherit;
-	margin: 0;
+	margin: auto;
+	
   }
 h1 {
-    /* Put a 15-pixel margin at the bottom of the heading. */
+    
     margin-bottom: 15px;
-    /* Change the size of your font to 60 pixels high. */
+   
     font-size: 40px;
     /* This will color the heading font white. */
     color: white;
