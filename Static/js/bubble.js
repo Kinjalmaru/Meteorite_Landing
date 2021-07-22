@@ -59,6 +59,6 @@ Plotly.newPlot('bubble', data, layout);
   // });
 
 
-=======
-Plotly.newPlot('bubble', data, layout);
->>>>>>> 2a23c63ab9d91afe68ab7648ee4bd80387960eb9
+// =======
+// Plotly.newPlot('bubble', data, layout);
+// >>>>>>> 2a23c63ab9d91afe68ab7648ee4bd80387960eb9
