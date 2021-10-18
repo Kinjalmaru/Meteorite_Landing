@@ -1,6 +1,6 @@
 // Define SVG area dimensions
 var svgWidth = 1300;
-var svgHeight = 660;
+var svgHeight = 500;
 
 // Define the chart's margins as an object
 var chartMargin = {
@@ -40,56 +40,6 @@ d3.csv("Data/impacts.csv").then(function(Data) {
           .append("option")
           .attr("value", (d) => {return d;})
           .text((d) => {return d;});
-    
-  
-   //get the data of the year inputed by the user
-   Data = Data.filter(function(d){
-   return d.Start == 2017
-
-   });
-  
-    // Cast the impacts value to a number for each piece of Data
-    Data.forEach(function(d) {
-      d.impacts = +d.impacts;
-    });
-
-    // Configure a band scale for the horizontal axis with a padding of 0.1 (10%)
-    var xBandScale = d3.scaleBand()
-      .domain(Data.map(d => d.name))
-      .range([0, chartWidth])
-      .padding(0.1);
-
-    // Create a linear scale for the vertical axis.
-    var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(Data, d => d.impacts)])
-      .range([chartHeight, 0]);
-
-    // Create two new functions passing our scales in as arguments
-    // These will be used to create the chart's axes
-    var bottomAxis = d3.axisBottom(xBandScale);
-    var leftAxis = d3.axisLeft(yLinearScale).ticks(10);
-
-    // Append two SVG group elements to the chartGroup area,
-    // and create the bottom and left axes inside of them
-    chartGroup.append("g")
-      .call(leftAxis);
-
-    chartGroup.append("g")
-      .attr("transform", `translate(0, ${chartHeight})`)
-      .call(bottomAxis);
-
-    // Create one SVG rectangle per piece of Data
-    // Use the linear and band scales to position each rectangle within the chart
-    chartGroup.selectAll(".bar")
-      .data(Data)
-      .enter()
-      .append("rect")
-      .attr("class", "bar")
-      .attr("x", d => xBandScale(d.name))
-      .attr("y", d => yLinearScale(d.impacts))
-      .attr("width", xBandScale.bandwidth())
-      .attr("height", d => chartHeight - yLinearScale(d.impacts));
-
 
 
  var updateGraph = function(selectedUnit){
